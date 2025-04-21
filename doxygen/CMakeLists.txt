@@ -39,7 +39,7 @@ if (DOXYGEN_FOUND)
   install (
       DIRECTORY ${HDF5_BINARY_DIR}/hdf5lib_docs/html
       DESTINATION ${HDF5_INSTALL_DOC_DIR}
-      COMPONENT hdfdocuments
+      COMPONENT ${HDF_COMPONENT_DOCS}
   )
 
   if (NOT TARGET doxygen)

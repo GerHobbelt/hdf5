@@ -34,7 +34,7 @@ if (NOT HDF5_EXTERNALLY_CONFIGURED)
         DESTINATION ${HDF5_INSTALL_CMAKE_DIR}
         FILE ${HDF5_PACKAGE}${HDF_PACKAGE_EXT}-targets.cmake
         NAMESPACE ${HDF_PACKAGE_NAMESPACE}
-        COMPONENT configinstall
+        COMPONENT ${HDF_COMPONENT_CFGS}
     )
   endif ()
 
@@ -87,7 +87,7 @@ if (NOT HDF5_EXTERNALLY_CONFIGURED)
   install (
       FILES ${HDF5_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${HDF5_PACKAGE}${HDF_PACKAGE_EXT}-config.cmake
       DESTINATION ${HDF5_INSTALL_CMAKE_DIR}
-      COMPONENT configinstall
+      COMPONENT ${HDF_COMPONENT_CFGS}
   )
 endif ()
 
@@ -107,7 +107,7 @@ if (NOT HDF5_EXTERNALLY_CONFIGURED)
   install (
       FILES ${HDF5_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${HDF5_PACKAGE}${HDF_PACKAGE_EXT}-config-version.cmake
       DESTINATION ${HDF5_INSTALL_CMAKE_DIR}
-      COMPONENT configinstall
+      COMPONENT ${HDF_COMPONENT_CFGS}
   )
 endif ()
 
@@ -126,7 +126,7 @@ configure_file (
 install (
     FILES ${HDF5_SRC_BINARY_DIR}/libhdf5.settings
     DESTINATION ${HDF5_INSTALL_LIB_DIR}
-    COMPONENT libraries
+    COMPONENT ${HDF_COMPONENT_LIBS}
 )
 
 #-----------------------------------------------------------------------------
@@ -145,32 +145,32 @@ if (HDF5_PACK_EXAMPLES)
   install (
       FILES ${HDF5_BINARY_DIR}/HDF5_Examples.cmake
       DESTINATION ${HDF5_INSTALL_DATA_DIR}
-      COMPONENT hdfdocuments
+      COMPONENT ${HDF_COMPONENT_DOCS}
   )
 
   install (
     DIRECTORY ${HDF5_SOURCE_DIR}/HDF5Examples
     DESTINATION ${HDF5_INSTALL_DATA_DIR}
     USE_SOURCE_PERMISSIONS
-    COMPONENT hdfdocuments
+    COMPONENT ${HDF_COMPONENT_DOCS}
   )
   install (
       FILES
           ${HDF5_SOURCE_DIR}/release_docs/USING_CMake_Examples.txt
       DESTINATION ${HDF5_INSTALL_DATA_DIR}
-      COMPONENT hdfdocuments
+      COMPONENT ${HDF_COMPONENT_DOCS}
   )
   install (
       FILES
           ${HDF_RESOURCES_DIR}/examples/CTestScript.cmake
       DESTINATION ${HDF5_INSTALL_DATA_DIR}
-      COMPONENT hdfdocuments
+      COMPONENT ${HDF_COMPONENT_DOCS}
   )
   install (
       FILES
           ${HDF_RESOURCES_DIR}/examples/HDF5_Examples_options.cmake
       DESTINATION ${HDF5_INSTALL_DATA_DIR}
-      COMPONENT hdfdocuments
+      COMPONENT ${HDF_COMPONENT_DOCS}
   )
 endif ()
 
@@ -193,7 +193,7 @@ if (NOT HDF5_EXTERNALLY_CONFIGURED)
   install (
       FILES ${HDF5_SOURCE_DIR}/COPYING
       DESTINATION ${HDF5_INSTALL_DATA_DIR}
-      COMPONENT hdfdocuments
+      COMPONENT ${HDF_COMPONENT_DOCS}
   )
   if (EXISTS "${HDF5_SOURCE_DIR}/release_docs" AND IS_DIRECTORY "${HDF5_SOURCE_DIR}/release_docs")
     set (release_files
@@ -236,7 +236,7 @@ if (NOT HDF5_EXTERNALLY_CONFIGURED)
     install (
         FILES ${release_files}
         DESTINATION ${HDF5_INSTALL_DOC_DIR}
-        COMPONENT hdfdocuments
+        COMPONENT ${HDF_COMPONENT_DOCS}
     )
   endif ()
 endif ()
@@ -460,8 +460,8 @@ The HDF5 data model, file format, API, library, and tools are open and distribut
         if (WIN32)
           set (CPACK_INSTALL_CMAKE_PROJECTS "${CPACK_INSTALL_CMAKE_PROJECTS};${H5_ZLIB_INCLUDE_DIR_GEN};HDF5_ZLIB;ALL;/")
         else ()
-          set (CPACK_INSTALL_CMAKE_PROJECTS "${CPACK_INSTALL_CMAKE_PROJECTS};${H5_ZLIB_INCLUDE_DIR_GEN};HDF5_ZLIB;libraries;/")
-          set (CPACK_INSTALL_CMAKE_PROJECTS "${CPACK_INSTALL_CMAKE_PROJECTS};${H5_ZLIB_INCLUDE_DIR_GEN};HDF5_ZLIB;configinstall;/")
+          set (CPACK_INSTALL_CMAKE_PROJECTS "${CPACK_INSTALL_CMAKE_PROJECTS};${H5_ZLIB_INCLUDE_DIR_GEN};HDF5_ZLIB;${HDF_COMPONENT_LIBS};/")
+          set (CPACK_INSTALL_CMAKE_PROJECTS "${CPACK_INSTALL_CMAKE_PROJECTS};${H5_ZLIB_INCLUDE_DIR_GEN};HDF5_ZLIB;${HDF_COMPONENT_CFGS};/")
         endif ()
       endif ()
       if (H5_SZIP_FOUND AND SZIP_USE_EXTERNAL)
@@ -469,15 +469,15 @@ The HDF5 data model, file format, API, library, and tools are open and distribut
         if (WIN32)
           set (CPACK_INSTALL_CMAKE_PROJECTS "${CPACK_INSTALL_CMAKE_PROJECTS};${H5_SZIP_INCLUDE_DIR_GEN};${SZIP_PROJNAME};ALL;/")
         else ()
-          set (CPACK_INSTALL_CMAKE_PROJECTS "${CPACK_INSTALL_CMAKE_PROJECTS};${H5_SZIP_INCLUDE_DIR_GEN};${SZIP_PROJNAME};libraries;/")
-          set (CPACK_INSTALL_CMAKE_PROJECTS "${CPACK_INSTALL_CMAKE_PROJECTS};${H5_SZIP_INCLUDE_DIR_GEN};${SZIP_PROJNAME};configinstall;/")
+          set (CPACK_INSTALL_CMAKE_PROJECTS "${CPACK_INSTALL_CMAKE_PROJECTS};${H5_SZIP_INCLUDE_DIR_GEN};${SZIP_PROJNAME};${HDF_COMPONENT_LIBS};/")
+          set (CPACK_INSTALL_CMAKE_PROJECTS "${CPACK_INSTALL_CMAKE_PROJECTS};${H5_SZIP_INCLUDE_DIR_GEN};${SZIP_PROJNAME};${HDF_COMPONENT_CFGS};/")
         endif ()
       endif ()
       if (PLUGIN_FOUND AND PLUGIN_USE_EXTERNAL)
         if (WIN32)
           set (CPACK_INSTALL_CMAKE_PROJECTS "${CPACK_INSTALL_CMAKE_PROJECTS};${PLUGIN_BINARY_DIR};PLUGIN;ALL;/")
         else ()
-          set (CPACK_INSTALL_CMAKE_PROJECTS "${CPACK_INSTALL_CMAKE_PROJECTS};${PLUGIN_BINARY_DIR};PLUGIN;libraries;/")
+          set (CPACK_INSTALL_CMAKE_PROJECTS "${CPACK_INSTALL_CMAKE_PROJECTS};${PLUGIN_BINARY_DIR};PLUGIN;${HDF_COMPONENT_LIBS};/")
         endif ()
       endif ()
     endif ()
@@ -508,26 +508,26 @@ The HDF5 data model, file format, API, library, and tools are open and distribut
   #---------------------------------------------------------------------------
   # Now list the cpack commands
   #---------------------------------------------------------------------------
-  cpack_add_component (libraries
+  cpack_add_component (${HDF_COMPONENT_LIBS}
       DISPLAY_NAME "HDF5 Libraries"
       GROUP Runtime
       INSTALL_TYPES Full Developer User
   )
   cpack_add_component (headers
       DISPLAY_NAME "HDF5 Headers"
-      DEPENDS libraries
+      DEPENDS ${HDF_COMPONENT_LIBS}
       GROUP Development
       INSTALL_TYPES Full Developer
   )
-  cpack_add_component (hdfdocuments
+  cpack_add_component (${HDF_COMPONENT_DOCS}
       DISPLAY_NAME "HDF5 Documents"
       GROUP Documents
       INSTALL_TYPES Full Developer
   )
-  cpack_add_component (configinstall
+  cpack_add_component (${HDF_COMPONENT_CFGS}
       DISPLAY_NAME "HDF5 CMake files"
       HIDDEN
-      DEPENDS libraries
+      DEPENDS ${HDF_COMPONENT_LIBS}
       GROUP Development
       INSTALL_TYPES Full Developer User
   )
@@ -535,7 +535,7 @@ The HDF5 data model, file format, API, library, and tools are open and distribut
   if (HDF5_BUILD_FORTRAN)
     cpack_add_component (fortlibraries
         DISPLAY_NAME "HDF5 Fortran Libraries"
-        DEPENDS libraries
+        DEPENDS ${HDF_COMPONENT_LIBS}
         GROUP Runtime
         INSTALL_TYPES Full Developer User
     )
@@ -550,7 +550,7 @@ The HDF5 data model, file format, API, library, and tools are open and distribut
   if (HDF5_BUILD_CPP_LIB)
     cpack_add_component (cpplibraries
         DISPLAY_NAME "HDF5 C++ Libraries"
-        DEPENDS libraries
+        DEPENDS ${HDF_COMPONENT_LIBS}
         GROUP Runtime
         INSTALL_TYPES Full Developer User
     )
@@ -564,7 +564,7 @@ The HDF5 data model, file format, API, library, and tools are open and distribut
 
   cpack_add_component (utilsapplications
       DISPLAY_NAME "HDF5 Utility Applications"
-      DEPENDS libraries
+      DEPENDS ${HDF_COMPONENT_LIBS}
       GROUP Applications
       INSTALL_TYPES Full Developer User
   )
@@ -578,7 +578,7 @@ The HDF5 data model, file format, API, library, and tools are open and distribut
     )
     cpack_add_component (toolslibraries
         DISPLAY_NAME "HDF5 Tools Libraries"
-        DEPENDS libraries
+        DEPENDS ${HDF_COMPONENT_LIBS}
         GROUP Runtime
         INSTALL_TYPES Full Developer User
     )
@@ -593,7 +593,7 @@ The HDF5 data model, file format, API, library, and tools are open and distribut
   if (HDF5_BUILD_HL_LIB)
     cpack_add_component (hllibraries
         DISPLAY_NAME "HDF5 HL Libraries"
-        DEPENDS libraries
+        DEPENDS ${HDF_COMPONENT_LIBS}
         GROUP Runtime
         INSTALL_TYPES Full Developer User
     )

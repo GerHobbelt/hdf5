@@ -1,6 +1,19 @@
 cmake_minimum_required (VERSION 3.18)
 project (HDF5 C)
 
+# externpro
+if(DEFINED XP_INSTALL_CMAKEDIR)
+  set(HDF_COMPONENT_CFGS devel)
+  set(HDF_COMPONENT_DOCS devel)
+  set(HDF_COMPONENT_HDRS devel)
+  set(HDF_COMPONENT_LIBS devel)
+else()
+  set(HDF_COMPONENT_CFGS configinstall)
+  set(HDF_COMPONENT_DOCS hdfdocuments)
+  set(HDF_COMPONENT_HDRS headers)
+  set(HDF_COMPONENT_LIBS libraries)
+endif()
+
 if (POLICY CMP0074)
   # find_package() uses <PackageName>_ROOT variables.
   cmake_policy (SET CMP0074 NEW)
