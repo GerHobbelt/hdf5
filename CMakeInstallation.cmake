@@ -591,34 +591,34 @@ The HDF5 data model, file format, API, library, and tools are open and distribut
   endif ()
 
   if (HDF5_BUILD_HL_LIB)
-    cpack_add_component (hllibraries
+    cpack_add_component (${HDF_COMPONENT_HLLIBS}
         DISPLAY_NAME "HDF5 HL Libraries"
         DEPENDS ${HDF_COMPONENT_LIBS}
         GROUP Runtime
         INSTALL_TYPES Full Developer User
     )
-    cpack_add_component (hlheaders
+    cpack_add_component (${HDF_COMPONENT_HLHDRS}
         DISPLAY_NAME "HDF5 HL Headers"
-        DEPENDS hllibraries
+        DEPENDS ${HDF_COMPONENT_HLLIBS}
         GROUP Development
         INSTALL_TYPES Full Developer
     )
     cpack_add_component (hltoolsapplications
         DISPLAY_NAME "HDF5 HL Tools Applications"
-        DEPENDS hllibraries
+        DEPENDS ${HDF_COMPONENT_HLLIBS}
         GROUP Applications
         INSTALL_TYPES Full Developer User
     )
     if (HDF5_BUILD_CPP_LIB)
-      cpack_add_component (hlcpplibraries
+      cpack_add_component (${HDF_COMPONENT_HLCPPLIBS}
           DISPLAY_NAME "HDF5 HL C++ Libraries"
-          DEPENDS hllibraries
+          DEPENDS ${HDF_COMPONENT_HLLIBS}
           GROUP Runtime
           INSTALL_TYPES Full Developer User
       )
-      cpack_add_component (hlcppheaders
+      cpack_add_component (${HDF_COMPONENT_HLCPPHDRS}
           DISPLAY_NAME "HDF5 HL C++ Headers"
-          DEPENDS hlcpplibraries
+          DEPENDS ${HDF_COMPONENT_HLCPPLIBS}
           GROUP Development
           INSTALL_TYPES Full Developer
       )
