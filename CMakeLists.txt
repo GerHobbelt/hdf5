@@ -1,8 +1,13 @@
-cmake_minimum_required (VERSION 3.18)
+cmake_minimum_required (VERSION 3.28)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/.devcontainer/cmake)
+include(preproject)
 project (HDF5 C)
 
 # externpro
+include(flags)
+set(webpro_REV NONE)
 if(DEFINED XP_INSTALL_CMAKEDIR)
+  set(HDF5_INSTALL_CMAKE_DIR ${XP_INSTALL_CMAKEDIR})
   set(HDF_COMPONENT_CFGS devel)
   set(HDF_COMPONENT_DOCS devel)
   set(HDF_COMPONENT_HDRS devel)
@@ -1249,4 +1254,10 @@ if (EXISTS "${HDF5_SOURCE_DIR}/HDF5Examples" AND IS_DIRECTORY "${HDF5_SOURCE_DIR
   endif ()
 endif ()
 
+if(DEFINED XP_INSTALL_CMAKEDIR)
+  set(hdf5Libs hdf5 hdf5_hl hdf5_cpp hdf5_hl_cpp)
+  list(TRANSFORM hdf5Libs PREPEND ${HDF_PACKAGE_NAMESPACE})
+  list(TRANSFORM hdf5Libs APPEND -static)
+  xpPackageDevel(LIBRARIES ${hdf5Libs} TARGETS_FILE hdf5-targets)
+endif()
 include (CMakeInstallation.cmake)
