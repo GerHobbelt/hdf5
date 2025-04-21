@@ -548,15 +548,15 @@ The HDF5 data model, file format, API, library, and tools are open and distribut
   endif ()
 
   if (HDF5_BUILD_CPP_LIB)
-    cpack_add_component (cpplibraries
+    cpack_add_component (${HDF_COMPONENT_CPPLIBS}
         DISPLAY_NAME "HDF5 C++ Libraries"
         DEPENDS ${HDF_COMPONENT_LIBS}
         GROUP Runtime
         INSTALL_TYPES Full Developer User
     )
-    cpack_add_component (cppheaders
+    cpack_add_component (${HDF_COMPONENT_CPPHDRS}
         DISPLAY_NAME "HDF5 C++ Headers"
-        DEPENDS cpplibraries
+        DEPENDS ${HDF_COMPONENT_CPPLIBS}
         GROUP Development
         INSTALL_TYPES Full Developer
     )
