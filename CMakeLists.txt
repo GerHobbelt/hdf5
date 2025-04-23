@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.28)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/.devcontainer/cmake)
 include(preproject)
-project (HDF5 VERSION 1.14.6 LANGUAGES C)
+project (HDF5 VERSION 1.14.6.1 LANGUAGES C)
 
 # externpro
 include(flags)
