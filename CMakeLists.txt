@@ -1,11 +1,10 @@
-cmake_minimum_required (VERSION 3.28)
+cmake_minimum_required (VERSION 3.31)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/.devcontainer/cmake)
 include(preproject)
 project (HDF5 VERSION 1.14.6.2 LANGUAGES C)
 
 # externpro
 include(flags)
-set(webpro_REV NONE)
 if(DEFINED XP_INSTALL_CMAKEDIR)
   set(HDF5_INSTALL_CMAKE_DIR ${XP_INSTALL_CMAKEDIR})
   if(HDF5_ENABLE_Z_LIB_SUPPORT)

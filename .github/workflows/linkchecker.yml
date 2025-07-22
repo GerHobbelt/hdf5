@@ -2,9 +2,6 @@ name: linkchecker
 
 on:
   workflow_dispatch:
-  push:
-  pull_request:
-    branches: [ hdf5_1_14_6 ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref && github.ref || github.run_id }}
