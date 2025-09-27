@@ -244,7 +244,7 @@ jserr_str(const char *expected, const char *actual, const char *reason)
     }
 
 #ifdef JSVERIFY_EXP_ACT
-/* VERIFY rountines with paramter order (<expected>, <actual> [, <msg> ])
+/* VERIFY rountines with parameter order (<expected>, <actual> [, <msg> ])
  */
 
 /*----------------------------------------------------------------------------

@@ -73,7 +73,7 @@ CONTAINS
 !  called C functions (it is needed for Windows
 !  port).  March 5, 2001
 !
-!  Added additional optional paramaters in 1.8
+!  Added additional optional parameters in 1.8
 !  MSB - February 27, 2008
 !
 ! SOURCE
@@ -1024,7 +1024,7 @@ CONTAINS
 !
 ! HISTORY
 !
-!  - Added 'mounted' paramater
+!  - Added 'mounted' parameter
 !    M. Scot Breitenfeld
 !    July 16, 2008
 !
@@ -1104,7 +1104,7 @@ CONTAINS
 !  February 18, 2008
 !
 ! HISTORY
-!  Added 'mounted' paramater
+!  Added 'mounted' parameter
 !  M. Scot Breitenfeld
 !  July 16, 2008
 !
@@ -1206,7 +1206,7 @@ CONTAINS
 !  February 18, 2008
 !
 ! HISTORY
-!  Added 'mounted' paramater
+!  Added 'mounted' parameter
 !  M. Scot Breitenfeld
 !  July 16, 2008
 ! SOURCE

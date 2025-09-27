@@ -3892,7 +3892,7 @@ test_misc21(void)
 
 /****************************************************************
 **
-**  test_misc22(): Test SZIP bits-per-pixel paramter.
+**  test_misc22(): Test SZIP bits-per-pixel parameter.
 **                      This should be set according to the datatype.
 **                      Tests for precision and offset combo's.
 **

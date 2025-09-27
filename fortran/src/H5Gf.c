@@ -879,7 +879,7 @@ done:
  *  February 15, 2008
  * HISTORY
  *
- *  - Added 'mounted' paramater
+ *  - Added 'mounted' parameter
  *  M. Scot Breitenfeld
  *  July 16, 2008
  * SOURCE
@@ -1014,7 +1014,7 @@ done:
  *  February 18, 2008
  * HISTORY
  *
- *  - Added 'mounted' paramater
+ *  - Added 'mounted' parameter
  *    M. Scot Breitenfeld
  *    July 16, 2008
  * SOURCE
