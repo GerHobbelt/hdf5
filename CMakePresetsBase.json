@@ -17,8 +17,14 @@
         "HDF5_INSTALL_DATA_DIR": "share",
         "HDF5_INSTALL_INCLUDE_DIR": "include/hdf5",
         "HDF5_NO_PACKAGES": "ON",
-        "XP_INSTALL_CMAKEDIR": "share/cmake"
+        "XP_NAMESPACE": "xpro"
       }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "build-base",
+      "hidden": true
     }
   ]
 }
