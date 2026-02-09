@@ -1246,6 +1246,6 @@ if(DEFINED XP_NAMESPACE AND COMMAND xpExternPackage)
     DESC "Utilize the HDF5 high performance data software library and file format to manage, process, and store your heterogeneous data. HDF5 is built for fast I/O processing and storage."
     LICENSE "[BSD-3-Clause](https://github.com/HDFGroup/hdf5/blob/develop/LICENSE 'BSD 3-Clause New or Revised License')"
     )
-  set(HDF5_INSTALL_CMAKE_DIR ${XP_INSTALL_CMAKEDIR})
+  set(HDF5_INSTALL_CMAKE_DIR ${CMAKE_INSTALL_CMAKEDIR})
 endif()
 include (CMakeInstallation.cmake)
