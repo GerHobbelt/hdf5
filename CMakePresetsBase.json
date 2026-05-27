@@ -7,7 +7,7 @@
       "binaryDir": "${sourceDir}/_bld-${presetName}",
       "cacheVariables": {
         "BUILD_SHARED_LIBS": "OFF",
-        "HDF_PACKAGE_NAMESPACE": "xpro::",
+        "HDF_PACKAGE_NAMESPACE": "hdf5::",
         "HDF5_BUILD_CPP_LIB": "ON",
         "HDF5_BUILD_HL_LIB": "ON",
         "HDF5_BUILD_TOOLS": "OFF",
@@ -16,8 +16,7 @@
         "HDF5_ENABLE_Z_LIB_SUPPORT": "ON",
         "HDF5_INSTALL_DATA_DIR": "share",
         "HDF5_INSTALL_INCLUDE_DIR": "include/hdf5",
-        "HDF5_NO_PACKAGES": "ON",
-        "XP_NAMESPACE": "xpro"
+        "HDF5_NO_PACKAGES": "ON"
       }
     }
   ],
