@@ -1,5 +1,4 @@
-cmake_minimum_required (VERSION 3.31)
-set(CMAKE_PROJECT_TOP_LEVEL_INCLUDES .devcontainer/cmake/xproinc.cmake)
+cmake_minimum_required (VERSION 4.3)
 project (HDF5 C)
 if(HDF5_BUILD_CPP_LIB)
   enable_language(CXX)
@@ -1235,13 +1234,13 @@ if (EXISTS "${HDF5_SOURCE_DIR}/HDF5Examples" AND IS_DIRECTORY "${HDF5_SOURCE_DIR
   endif ()
 endif ()
 
-if(DEFINED XP_NAMESPACE AND COMMAND xpExternPackage)
+if(COMMAND xpExternPackage)
   set(hdf5BaseTag hdf5_${H5_VERS_MAJOR}.${H5_VERS_MINOR}.${H5_VERS_RELEASE})
   set(hdf5Libs hdf5 hdf5_hl hdf5_cpp hdf5_hl_cpp)
   list(TRANSFORM hdf5Libs APPEND -static)
-  xpExternPackage(REPO_NAME hdf5 NAMESPACE ${XP_NAMESPACE} ALIAS_NAMESPACE hdf5
+  xpExternPackage(REPO_NAME hdf5 NO_EXPORT
     TARGETS_FILE hdf5-targets LIBRARIES ${hdf5Libs}
-    BASE ${hdf5BaseTag} XPDIFF "patch" DEPS zlib
+    BASE ${hdf5BaseTag} XPDIFF "patch"
     WEB "https://www.hdfgroup.org/solutions/hdf5/" UPSTREAM "github.com/HDFGroup/hdf5"
     DESC "Utilize the HDF5 high performance data software library and file format to manage, process, and store your heterogeneous data. HDF5 is built for fast I/O processing and storage."
     LICENSE "[BSD-3-Clause](https://github.com/HDFGroup/hdf5/blob/develop/LICENSE 'BSD 3-Clause New or Revised License')"
