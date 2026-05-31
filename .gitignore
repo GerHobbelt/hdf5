@@ -25,3 +25,8 @@ HDF5Examples/CMakeUserPresets.json
 *~
 \#*\#
 .\#*
+
+# externpro
+.env
+_bld*/
+docker-compose.override.yml
