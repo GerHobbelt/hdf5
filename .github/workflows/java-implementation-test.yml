@@ -2,15 +2,6 @@ name: Java Implementation Testing (FFM vs JNI)
 
 # Test both FFM and JNI implementations across multiple Java versions
 on:
-  pull_request:
-    branches: [ develop, main ]
-    paths:
-      - 'java/**'
-      - 'CMakeBuildOptions.cmake'
-      - 'CMakePresets.json'
-      - 'config/cmake-presets/hidden-presets.json'
-      - '.github/workflows/java-implementation-test.yml'
-      - '.github/scripts/test-java-implementations.sh'
   workflow_call:
     inputs:
       java_versions:

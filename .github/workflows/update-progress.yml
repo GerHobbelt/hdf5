@@ -1,8 +1,6 @@
 name: Release Progress
 
 on:
-  schedule:
-    - cron: '0 */4 * * *'  # Run every 4 hours
   workflow_dispatch:  # Allow manual triggering
 
 jobs:

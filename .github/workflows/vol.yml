@@ -1,10 +1,8 @@
 name: hdf5 VOL connectors CI
 
-# Run VOL connector CI daily at 06:00 CDT (11:00 UTC) or on demand.
+# Run VOL connector CI on demand.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 11 * * *"
 
 permissions:
   contents: read
