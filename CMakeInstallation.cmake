@@ -144,6 +144,7 @@ configure_package_config_file (
 if (NOT HDF5_EXTERNALLY_CONFIGURED)
   install (
       FILES ${HDF5_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${HDF5_PACKAGE}${HDF_PACKAGE_EXT}-config.cmake
+      RENAME ${HDF5_PACKAGE}${HDF_PACKAGE_EXT}-config-orig.cmake
       DESTINATION ${HDF5_INSTALL_CMAKE_DIR}
       COMPONENT configinstall
   )
