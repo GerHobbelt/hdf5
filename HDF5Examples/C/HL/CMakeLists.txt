@@ -106,19 +106,21 @@ endforeach ()
 #  endforeach ()
 #endif ()
 
+# Copy image data files needed by h5ex_image2 test (unconditional)
+add_custom_command (
+    TARGET     ${EXAMPLE_VARNAME}_h5ex_image2
+    POST_BUILD
+    COMMAND    ${CMAKE_COMMAND}
+    ARGS       -E copy_if_different ${PROJECT_SOURCE_DIR}/tfiles/image8.txt ${PROJECT_BINARY_DIR}/image8.txt
+)
+add_custom_command (
+    TARGET     ${EXAMPLE_VARNAME}_h5ex_image2
+    POST_BUILD
+    COMMAND    ${CMAKE_COMMAND}
+    ARGS       -E copy_if_different ${PROJECT_SOURCE_DIR}/tfiles/image24pixel.txt ${PROJECT_BINARY_DIR}/image24pixel.txt
+)
+
 if (HDF5_PROVIDES_TOOLS)
-  add_custom_command (
-      TARGET     ${EXAMPLE_VARNAME}_h5ex_image2
-      POST_BUILD
-      COMMAND    ${CMAKE_COMMAND}
-      ARGS       -E copy_if_different ${PROJECT_SOURCE_DIR}/tfiles/image8.txt ${PROJECT_BINARY_DIR}/image8.txt
-  )
-  add_custom_command (
-      TARGET     ${EXAMPLE_VARNAME}_h5ex_image2
-      POST_BUILD
-      COMMAND    ${CMAKE_COMMAND}
-      ARGS       -E copy_if_different ${PROJECT_SOURCE_DIR}/tfiles/image24pixel.txt ${PROJECT_BINARY_DIR}/image24pixel.txt
-  )
   foreach (example_name ${common_examples})
     if (NOT ${example_name} STREQUAL "h5ex_lite1" AND NOT ${example_name} STREQUAL "h5ex_lite2")
       if (H5EXAMPLE_WORDS_BIGENDIAN)
